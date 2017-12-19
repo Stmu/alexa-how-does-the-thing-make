@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - "lts/*"
+
+script:
+- npm install
+- npm build
+
+after_success:
+- ./node_modules/.bin/serverless deploy 
+#function --function handler
