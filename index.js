@@ -11,6 +11,9 @@ exports.handler = function(event, context, callback) {
 };
 
 const handlers = {
+    'LaunchRequest':function(){
+        this.emit(':tell', "Hello...");
+    },
     'QuestionIntent' : function() {
         //emit response directly
         var intent = this.event.request.intent
