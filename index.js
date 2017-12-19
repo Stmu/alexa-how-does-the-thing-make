@@ -113,7 +113,9 @@ var startStateHandlers = Alexa.CreateStateHandler(GAME_STATES.START, {
 
 var triviaStateHandlers = Alexa.CreateStateHandler(GAME_STATES.TRIVIA, {
     "QuestionIntent":function(){
-
+        var intent = this.event.request.intent
+        var animal = intent && intent.slots && intent.slots.Animal && intent.slots.Animal.value;
+        this.emit(":tell", "muuuuuhhhh");
     },
     "AMAZON.StartOverIntent": function () {
         this.handler.state = GAME_STATES.START;
