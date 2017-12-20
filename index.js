@@ -48,7 +48,7 @@ const = Alexa.CreateStateHandler(SKILL_STATES.TRIVIA, {
         this.emit(":ask", speechOutput, speechOutput);
     },
     "AMAZON.CancelIntent": function () {
-        this.emit(":tell","OK, dann bis bald mal wieder.);
+        this.emit(":tell","OK, dann bis bald mal wieder.");
     },
     "SessionEndedRequest": function () {
         console.log("Session ended in trivia state: " + this.event.request.reason);
