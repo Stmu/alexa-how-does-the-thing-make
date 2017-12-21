@@ -34,7 +34,7 @@ const questionHandler = Alexa.CreateStateHandler(SKILL_STATES.QUESTIONS, {
         //emit response directly
         var intent = this.event.request.intent
         var animal = intent && intent.slots && intent.slots.Animal && intent.slots.Animal.value;
-        
+        console.log(intent);
         this.emit(':tell', "muh muh muh macht die " + animal);
       //  this.emit(":tell", "muuuuuhhhh");
     },
