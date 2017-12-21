@@ -20,7 +20,7 @@ var startHandler = Alexa.CreateStateHandler(SKILL_STATES.START, {
       
         
       this.handler.state = SKILL_STATES.QUESTIONS;
-      this.emit(':tell', "Hallo ich kann Tierstimmen nachmachen. Frage dazu: Wie macht eine Kuh?");
+      this.emit(':ask', "Hallo ich kann Tierstimmen nachmachen. Frage dazu: Wie macht eine Kuh?");
       //this.emit(":ask", "Was möchtest du wissen?");
        this.emitWithState("QuestionIntent", true);
     }
