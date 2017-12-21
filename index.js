@@ -37,7 +37,7 @@ var startHandler = Alexa.CreateStateHandler(SKILL_STATES.START, {
       
         
       this.handler.state = SKILL_STATES.QUESTIONS;
-      this.emit(':ask', "Hallo ich kann Tierstimmen nachmachen. Frage dazu Wie macht eine Kuh?");
+      this.emit(':ask', "Hallo ich kann Tierstimmen nachmachen. Frage dazu beispielsweise: Wie macht die Katze?");
       //this.emit(":ask", "Was möchtest du wissen?");
        this.emitWithState("QuestionIntent", true);
     }
@@ -66,9 +66,8 @@ const questionHandler = Alexa.CreateStateHandler(SKILL_STATES.QUESTIONS, {
         this.emitWithState("Intro", false);
     },
     "AMAZON.StopIntent": function () {
-        this.handler.state = SKILL_STATES.HELP;
-        var speechOutput = this.t("STOP_MESSAGE");
-        this.emit(":ask", speechOutput, speechOutput);
+    
+        this.emit(":tell", "bis bald...");
     },
     "AMAZON.CancelIntent": function () {
         this.emit(":tell","OK, dann bis bald mal wieder.");
