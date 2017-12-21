@@ -6,6 +6,8 @@ var SKILL_STATES = {
     HELP: "_HELPMODE" // The user is asking for help.
 };
 
+var mapping = [{kuh:"muhmuuuu"}, {katze:"miau"}]
+
 var Alexa = require("alexa-sdk");
 
 exports.handler = function(event, context, callback) {
@@ -33,7 +35,7 @@ const questionHandler = Alexa.CreateStateHandler(SKILL_STATES.QUESTIONS, {
         var intent = this.event.request.intent
         var animal = intent && intent.slots && intent.slots.Animal && intent.slots.Animal.value;
         
-        this.emit(':tell', "muuuuuhhhh...");
+        this.emit(':tell', "muh muh muh macht die " + animal);
       //  this.emit(":tell", "muuuuuhhhh");
     },
     "AMAZON.StartOverIntent": function () {
