@@ -17,11 +17,11 @@ exports.handler = function(event, context, callback) {
 
 var startHandler = Alexa.CreateStateHandler(SKILL_STATES.START, {
     "Intro": function () {
-      this.emit(':tell', "Hallo frag mich wie ein Tier macht. Sage dazu: ");
+      this.emit(':tell', "Hallo frag mich wie ein Tier macht. Sage dazu:");
       this.emit(':ask', "Wie macht eine Kuh?");
         
       this.handler.state = GAME_STATES.TRIVIA;
-      this.emit(":ask", "Was möchtest du wissen?");
+      //this.emit(":ask", "Was möchtest du wissen?");
     }
 });
 
