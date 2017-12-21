@@ -1,7 +1,7 @@
 "use strict";
 var APP_ID = undefined;  // TODO replace with your app ID (OPTIONAL).
 var SKILL_STATES = {
-    TRIVIA: "_TRIVIAMODE", // Asking trivia questions.
+    QUESTIONS: "_QUESTIONMODE", // Asking questions.
     START: "_STARTMODE", // Entry point, start the game.
     HELP: "_HELPMODE" // The user is asking for help.
 };
@@ -19,14 +19,15 @@ var startHandler = Alexa.CreateStateHandler(SKILL_STATES.START, {
     "Intro": function () {
       this.emit(':tell', "Hallo frag mich wie ein Tier macht. Sage dazu: Wie macht eine Kuh?");
         
-      this.handler.state = SKILL_STATES.TRIVIA;
+      this.handler.state = SKILL_STATES.QUESTIONS;
       //this.emit(":ask", "Was möchtest du wissen?");
        this.emitWithState("QuestionIntent");
     }
 });
 
-const questionHandler = Alexa.CreateStateHandler(SKILL_STATES.TRIVIA, {
+const questionHandler = Alexa.CreateStateHandler(SKILL_STATES.QUESTIONS, {
     'QuestionIntent' : function() {
+
         //emit response directly
         var intent = this.event.request.intent
         var animal = intent && intent.slots && intent.slots.Animal && intent.slots.Animal.value;
@@ -62,11 +63,11 @@ const newSessionHandlers = {
         this.emitWithState("Intro");
     },
     "AMAZON.StartOverIntent": function() {
-        this.handler.state = GAME_STATES.START;
+        this.handler.state = SKILL_STATES.START;
         this.emitWithState("StartGame", true);
     },
     "AMAZON.HelpIntent": function() {
-        this.handler.state = GAME_STATES.HELP;
+        this.handler.state = SKILL_STATES.HELP;
         this.emitWithState("helpTheUser", true);
     },
     "Unhandled": function () {
