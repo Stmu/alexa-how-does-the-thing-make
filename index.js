@@ -6,23 +6,22 @@ var SKILL_STATES = {
     HELP: "_HELPMODE" // The user is asking for help.
 };
 
-var animalSound = [
-    {kuh:"muhmuuuu mhuuu muuuu"}, 
-    {katze:"miau miau"},
-    {schwein:"oink oink"},
-    {huhn:"borg borg "},
-    {hund:"wau wau wau"},
-    {pferd:"ühhhüühüüü"},
-    {frosch:"quak quak quak"},
-    {elefant:"töröö"},
-    {biene:"wau wau wau"},
-    {hummel:"zzzz"},
-    
-    {maus:"piep piep"},
-    {uhu:"schuuhuuuhu schuuhuu"},
-    {meerschwein:"quiek quiek"},
-    {kücken:"schiep schiep"},
-]
+var animalSound = {
+    kuh:"muhmuuuu mhuuu muuuu", 
+    katze:"miau miau",
+    schwein:"oink oink",
+    huhn:"borg borg ",
+    hund:"wau wau wau",
+    pferd:"ühhhüühüüü",
+    frosch:"quak quak quak",
+    elefant:"töröö",
+    biene:"wau wau wau",
+    hummel:"zzzz",
+    maus:"piep piep",
+    uhu:"schuuhuuuhu schuuhuu",
+    meerschwein:"quiek quiek",
+    kücken:"schiep schiep",
+}
 
 var Alexa = require("alexa-sdk");
 
