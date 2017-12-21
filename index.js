@@ -54,7 +54,7 @@ const questionHandler = Alexa.CreateStateHandler(SKILL_STATES.QUESTIONS, {
         var sound = animalSound[animal]
         console.log(intent);
 
-        this.emit(':tell', sound + " macht " + article + " " + animal);
+        this.emit(':ask', sound + " macht " + article + " " + animal);
       //  this.emit(":tell", "muuuuuhhhh");
     },
     "AMAZON.StartOverIntent": function () {
