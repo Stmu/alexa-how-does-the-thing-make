@@ -21,6 +21,7 @@ var startHandler = Alexa.CreateStateHandler(SKILL_STATES.START, {
         
       this.handler.state = GAME_STATES.TRIVIA;
       //this.emit(":ask", "Was möchtest du wissen?");
+       this.emitWithState("QuestionIntent");
     }
 });
 
