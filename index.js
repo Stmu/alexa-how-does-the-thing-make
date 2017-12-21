@@ -17,16 +17,17 @@ exports.handler = function(event, context, callback) {
 
 var startHandler = Alexa.CreateStateHandler(SKILL_STATES.START, {
     "Intro": function () {
-      this.emit(':tell', "Hallo frag mich wie ein Tier macht. Sage dazu: Wie macht eine Kuh?");
+      
         
       this.handler.state = SKILL_STATES.QUESTIONS;
+      this.emit(':tell', "Hallo ich kann Tierstimmen nachmachen. Frage dazu: Wie macht eine Kuh?");
       //this.emit(":ask", "Was möchtest du wissen?");
-       this.emitWithState("QuestionIntent");
+       this.emitWithState("QuestionIntent", true);
     }
 });
 
 const questionHandler = Alexa.CreateStateHandler(SKILL_STATES.QUESTIONS, {
-    'QuestionIntent' : function() {
+    'QuestionIntent' : function(value) {
 
         //emit response directly
         var intent = this.event.request.intent
