@@ -34,8 +34,9 @@ const questionHandler = Alexa.CreateStateHandler(SKILL_STATES.QUESTIONS, {
         //emit response directly
         var intent = this.event.request.intent
         var animal = intent && intent.slots && intent.slots.Animal && intent.slots.Animal.value;
+        var article = intent && intent.slots && intent.slots.article && intent.slots.article.value;
         console.log(intent);
-        this.emit(':tell', "muh muh muh macht die " + animal);
+        this.emit(':tell', "muh muh muh macht" + article + " " + animal);
       //  this.emit(":tell", "muuuuuhhhh");
     },
     "AMAZON.StartOverIntent": function () {
