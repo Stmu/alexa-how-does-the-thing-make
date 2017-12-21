@@ -7,9 +7,9 @@ var SKILL_STATES = {
 };
 
 var animalSound = [
-    {Kuh:"muhmuuuu mhuuu muuuu"}, 
-    {Katze:"miau miau"},
-    {Schwein:"oink oink"}
+    {kuh:"muhmuuuu mhuuu muuuu"}, 
+    {katze:"miau miau"},
+    {schwein:"oink oink"}
 ]
 
 var Alexa = require("alexa-sdk");
