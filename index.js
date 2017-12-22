@@ -54,11 +54,18 @@ const questionHandler = Alexa.CreateStateHandler(SKILL_STATES.QUESTIONS, {
         var intent = this.event.request.intent
         var animal = intent && intent.slots && intent.slots.Animal && intent.slots.Animal.value;
         var article = intent && intent.slots && intent.slots.article && intent.slots.article.value;
+       
         if (animal !== undefined){
+            
             var sound = animalSound[animal]
             console.log(intent);
-    
-            this.emit(':ask', sound + " macht " + article + " " + animal);
+            if ( sound !== undefined) {
+                this.emit(':ask', sound + " macht " + article + " " + animal);
+            }
+            else{        
+                this.emit(':ask', "ich weiß leider nicht welchen ton " + article + " " + animal + " von sich gibt. Aber ich lerne immer weiter. Frag mich bald danach.");
+            }
+            
         }
         else{
             console.dir(intent);
