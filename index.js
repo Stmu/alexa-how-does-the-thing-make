@@ -21,6 +21,10 @@ var animalSound = {
     uhu:"schuuhuuuhu schuuhuu",
     meerschwein:"quiek quiek",
     kücken:"schiep schiep",
+    esel:"iaaaa iaaaaa",
+    ente: "nak nak nak",
+    vogel: "piep piep piep",
+    schaf: "määä määä"
 }
 
 var Alexa = require("alexa-sdk");
@@ -50,11 +54,17 @@ const questionHandler = Alexa.CreateStateHandler(SKILL_STATES.QUESTIONS, {
         var intent = this.event.request.intent
         var animal = intent && intent.slots && intent.slots.Animal && intent.slots.Animal.value;
         var article = intent && intent.slots && intent.slots.article && intent.slots.article.value;
-
-        var sound = animalSound[animal]
-        console.log(intent);
-
-        this.emit(':ask', sound + " macht " + article + " " + animal);
+        if (animal !== undefined){
+            var sound = animalSound[animal]
+            console.log(intent);
+    
+            this.emit(':ask', sound + " macht " + article + " " + animal);
+        }
+        else{
+            console.dir(intent);
+            this.emit(':ask', "Das Tier kenne ich noch nicht, aber ich lerne immer weiter. Frag mich bald danach.");
+        }
+        
       //  this.emit(":tell", "muuuuuhhhh");
     },
     "AMAZON.StartOverIntent": function () {
