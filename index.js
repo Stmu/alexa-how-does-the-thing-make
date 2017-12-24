@@ -60,16 +60,16 @@ const questionHandler = Alexa.CreateStateHandler(SKILL_STATES.QUESTIONS, {
             var sound = animalSound[animal]
             console.log(intent);
             if ( sound !== undefined) {
-                this.emit(':ask', sound + " macht " + article + " " + animal);
+                this.emit(':ask', sound + " macht " + article + " " + animal + ". Möchtest du ein anderes Tier hören?");
             }
             else{        
-                this.emit(':ask', "ich weiß leider nicht welchen ton " + article + " " + animal + " von sich gibt. Aber ich lerne immer weiter. Frag mich bald danach.");
+                this.emit(':ask', "ich weiß leider nicht welchen ton " + article + " " + animal + " von sich gibt. Aber ich lerne immer weiter. Frag mich bald danach. Möchtest du ein anderes Tier hören?");
             }
             
         }
         else{
             console.dir(intent);
-            this.emit(':ask', "Das Tier kenne ich noch nicht, aber ich lerne immer weiter. Frag mich bald danach.");
+            this.emit(':ask', "Das Tier kenne ich noch nicht, aber ich lerne immer weiter. Frag mich bald danach. Möchtest du ein anderes Tier hören?");
         }
         
       //  this.emit(":tell", "muuuuuhhhh");
@@ -105,11 +105,10 @@ const newSessionHandlers = {
         this.emitWithState("StartGame", true);
     },
     "AMAZON.HelpIntent": function() {
-        this.handler.state = SKILL_STATES.HELP;
-        this.emitWithState("helpTheUser", true);
+        this.emit(":tell", "Nachdem du das Kill mit ALexa, starte wie macht, kannst du mich beispielsweise fragen wie macht die Katze, oder sage Stop zum beenden.");
     },
     "Unhandled": function () {
-        this.emit(":tell", "Du kannst jederzeit von vorn beginnen, sage einfach „Neue Frage starten“.");
+        this.emit(":tell", "Du kannst mich beispielsweise fragen wie macht die Katze, oder sage Stop zum beenden.");
     },
     
 };     
