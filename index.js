@@ -7,24 +7,25 @@ var SKILL_STATES = {
 };
 
 var animalSound = {
-    kuh: "muhmuuuu mhuuu muuuu",
-    katze: "miau miau",
-    schwein: "oink oink",
-    huhn: "borg borg ",
-    hund: "wau wau wau",
-    pferd: "ühhhüühüüü",
-    frosch: "quak quak quak",
-    elefant: "töröö",
-    biene: "wau wau wau",
-    hummel: "zzzz",
-    maus: "piep piep",
-    uhu: "schuuhuuuhu schuuhuu",
-    meerschwein: "quiek quiek",
-    kücken: "schiep schiep",
-    esel: "iaaaa iaaaaa",
-    ente: "nak nak nak",
-    vogel: "piep piep piep",
-    schaf: "määä määä"
+    kuh: {sound: "muhmuuuu mhuuu muuuu", article: 'die'},
+    katze: {sound: "miau miau", article: 'die'},
+    schwein: {sound: "oink oink", article: 'das'},
+    huhn: {sound: "borg borg ", article: 'das'},
+    hund: {sound: "wau wau wau", article: 'der'},
+    pferd: {sound: "ühhhüühüüü", article: 'das'},
+    frosch: {sound: "quak quak quak", article: 'der'},
+    elefant: {sound: "töröö", article: 'der'},
+    biene: {sound: "wau wau wau", article: 'die'},
+    hummel: {sound: "zzzz", article: 'die'},
+    maus: {sound: "piep piep", article: 'die'},
+    uhu: {sound: "schuuhuuuhu schuuhuu", article: 'der'},
+    eule: {sound: "schuuhuuuhu schuuhuu", article: 'die'},
+    meerschwein: {sound: "quiek quiek", article: 'das'},
+    kücken: {sound: "schiep schiep", article: 'das'},
+    esel: {sound: "iaaaa iaaaaa", article: 'der'},
+    ente: {sound: "nak nak nak", article: 'die'},
+    vogel: {sound: "piep piep piep", article: 'der'},
+    schaf: {sound: "määä määäh", article: 'das'},
 }
 
 var Alexa = require("alexa-sdk");
@@ -61,9 +62,13 @@ const questionHandler = Alexa.CreateStateHandler(SKILL_STATES.QUESTIONS, {
                 this.emit(':tell', "Alles klar, bis bald.");
             } else {
                 var sound = animalSound[animal]
+                console.log(sound);
                 console.log(intent);
+                if (article === undefined){
+                    article = sound.article;
+                }
                 if (sound !== undefined) {
-                    this.emit(':ask', sound + " macht " + article + " " + animal + ". Frag mich nach einem anderen Tier oder sage Stop zum beenden.");
+                    this.emit(':ask', sound.sound + " macht " + article + " " + animal + ". Frag mich nach einem anderen Tier oder sage Stop zum beenden.");
                 }
                 else {
                     console.dir("unknown animal sound detected. Plase add sound for '" + animal + "'");
