@@ -26,6 +26,7 @@ var animalSound = {
     ente: {sound: "nak nak nak", article: 'die'},
     vogel: {sound: "piep piep piep", article: 'der'},
     schaf: {sound: "määä määäh", article: 'das'},
+    wal: {sound:'uuuuuuuuuuuuuuuuuuuu', article:'der'}
 }
 
 var Alexa = require("alexa-sdk");
