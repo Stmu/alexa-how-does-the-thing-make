@@ -63,17 +63,18 @@ const questionHandler = Alexa.CreateStateHandler(SKILL_STATES.QUESTIONS, {
                 var sound = animalSound[animal]
                 console.log(intent);
                 if (sound !== undefined) {
-                    this.emit(':ask', sound + " macht " + article + " " + animal + ". Möchtest du ein anderes Tier hören?");
+                    this.emit(':ask', sound + " macht " + article + " " + animal + ". Frag mich nach einem anderen Tier oder sage Stop zum beenden.");
                 }
                 else {
-                    this.emit(':ask', "ich weiß leider nicht welchen ton " + article + " " + animal + " von sich gibt. Aber ich lerne immer weiter. Frag mich bald danach. Möchtest du ein anderes Tier hören?");
+                    console.dir("unknown animal sound detected. Plase add sound for '" + animal + "'");
+                    this.emit(':ask', "ich weiß leider nicht welchen Laut " + article + " " + animal + " von sich gibt. Aber ich lerne immer weiter. Frag mich bald danach. Welches Tier möchtest du nun hören?");
                 }
 
             }
         }
         else {
-            console.dir(intent);
-            this.emit(':ask', "Das Tier kenne ich noch nicht, aber ich lerne immer weiter. Frag mich bald danach. Möchtest du ein anderes Tier hören?");
+            console.dir("unknown animal detected. Add '" + intent + "'");
+            this.emit(':ask', "Das Tier kenne ich noch nicht, aber ich lerne immer weiter. Frag mich bald danach. Welches Tier möchtest du jetzt hören?");
         }
 
         //  this.emit(":tell", "muuuuuhhhh");
@@ -109,7 +110,7 @@ const newSessionHandlers = {
         this.emitWithState("StartGame", true);
     },
     "AMAZON.HelpIntent": function () {
-        this.emit(":tell", "Nachdem du das Kill mit ALexa, starte wie macht, kannst du mich beispielsweise fragen wie macht die Katze, oder sage Stop zum beenden.");
+        this.emit(":tell", "Nachdem du das Kill mit Alexa, starte wie macht, gestartet hast, kannst du beispielsweise fragen, wie macht die Katze oder wie macht der Esel. Zum beenden sage einfach Stop oder Abbrechen.");
     },
     "Unhandled": function () {
         this.emit(":tell", "Du kannst mich beispielsweise fragen wie macht die Katze, oder sage Stop zum beenden.");
