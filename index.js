@@ -40,10 +40,11 @@ exports.handler = function (event, context, callback) {
 
 var startHandler = Alexa.CreateStateHandler(SKILL_STATES.START, {
     "Intro": function () {
-
-
-        this.handler.state = SKILL_STATES.QUESTIONS;
-        this.emit(':ask', "Hallo ich kann Tierstimmen nachmachen. Frage dazu beispielsweise: Wie macht die Katze?");
+        var intent = this.event.request.intent
+        if(intent === undefined){
+            this.handler.state = SKILL_STATES.QUESTIONS;
+            this.emit(':ask', "Hallo ich kann Tierstimmen nachmachen. Frage dazu beispielsweise: Wie macht die Katze?");
+        }
         //this.emit(":ask", "Was möchtest du wissen?");
         this.emitWithState("QuestionIntent", true);
     }
