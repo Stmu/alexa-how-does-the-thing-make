@@ -88,11 +88,11 @@ const questionHandler = Alexa.CreateStateHandler(SKILL_STATES.QUESTIONS, {
     },
     "AMAZON.StartOverIntent": function () {
         this.handler.state = SKILL_STATES.START;
-        this.emitWithState("Intro", false);
+        this.emitWithState("Intro");
     },
     "AMAZON.HelpIntent": function () {
         this.handler.state = SKILL_STATES.START;
-        this.emitWithState("Intro", false);
+        this.emitWithState("Intro");
     },
     "AMAZON.StopIntent": function () {
 
