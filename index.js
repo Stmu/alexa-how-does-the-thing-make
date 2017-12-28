@@ -50,6 +50,13 @@ var startHandler = Alexa.CreateStateHandler(SKILL_STATES.START, {
     }
 });
 
+const helpHandler = Alexa.CreateStateHandler(SKILL_STATES.HELP, {
+    'help': function(){
+        this.handler.state = SKILL_STATES.QUESTIONS;
+        this.emit(':ask', "Frage mich dazu beispielsweise: Wie macht die Katze. Dann mache ich miau. Sagst du stop beendest du mich.");
+    }
+});
+
 const questionHandler = Alexa.CreateStateHandler(SKILL_STATES.QUESTIONS, {
     'QuestionIntent': function (value) {
 
@@ -91,8 +98,8 @@ const questionHandler = Alexa.CreateStateHandler(SKILL_STATES.QUESTIONS, {
         this.emitWithState("Intro");
     },
     "AMAZON.HelpIntent": function () {
-        this.handler.state = SKILL_STATES.START;
-        this.emitWithState("Intro");
+        this.handler.state = SKILL_STATES.HELP;
+        this.emitWithState("help");
     },
     "AMAZON.StopIntent": function () {
 
