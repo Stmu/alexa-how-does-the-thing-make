@@ -43,9 +43,9 @@ var startHandler = Alexa.CreateStateHandler(SKILL_STATES.START, {
         var intent = this.event.request.intent
         if(intent === undefined){
             this.handler.state = SKILL_STATES.QUESTIONS;
-            this.emit(':ask', "Hallo ich kann Tierstimmen nachmachen. Frage dazu beispielsweise: Wie macht die Katze?");
+            this.emit(':ask', "Hallo ich kann Tierstimmen nachmachen. Frage mich dazu beispielsweise: Wie macht die Katze?");
         }
-        //this.emit(":ask", "Was möchtest du wissen?");
+        
         this.emitWithState("QuestionIntent", true);
     }
 });
@@ -112,15 +112,11 @@ const newSessionHandlers = {
         this.handler.state = SKILL_STATES.START;
         this.emitWithState("Intro");
     },
-    "AMAZON.StartOverIntent": function () {
-        this.handler.state = SKILL_STATES.START;
-        this.emitWithState("StartGame", true);
-    },
     "AMAZON.HelpIntent": function () {
-        this.emit(":tell", "Nachdem du das Kill mit Alexa, starte wie macht, gestartet hast, kannst du beispielsweise fragen, wie macht die Katze oder wie macht der Esel. Zum beenden sage einfach Stop oder Abbrechen.");
+        this.emit(":tell", "Nachdem du das Skill mit Alexa, starte wie macht, gestartet hast, kannst du beispielsweise fragen, wie macht die Katze oder wie macht der Esel. Zum beenden sage einfach Stop oder Abbrechen.");
     },
     "Unhandled": function () {
-        this.emit(":tell", "Du kannst mich beispielsweise fragen wie macht die Katze, oder sage Stop zum beenden.");
+        this.emit(":tell", "Das habe ich nicht verstanden. Nachdem du das Skill mit Alexa, starte wie macht, gestartet hast, kannst du beispielsweise fragen, wie macht die Katze oder wie macht der Esel. Zum beenden sage einfach Stop oder Abbrechen.");
     },
 
 };
